@@ -1,16 +1,38 @@
 <?php
 include("RankChecker.class.php");
 $RankChecker = new RankChecker(1,5);
-$result = $RankChecker->find("dotcomcodex.com","viral coupon popup");
 
-if ($result !== false)
+for($res = 10; $res<=40; $res += 10)
 {
-	echo "Your website is found at page number  ".$result["page"].".";
-	echo "<br />Visit here: <a href='".$result["url"]."'>".$result["url"]."</a>";
-	echo "<br />Your website rank is ".$result["position"];
+	set_time_limit(90);
+	$result = $RankChecker->find("com", $res, "imlaunchr.com","viral coupon popup");
+	if ($result !== false)
+	{
+		echo "Page: ".$result["page"].".";
+		echo "<br />Link: <a href='".$result["url"]."'>".$result["url"]."</a>";
+		echo "<br />Position: ".$result["position"];
+		echo "<hr />";
+	}
+	else
+	{
+		echo "Not found!";
+	}
 }
-else
+
+for($res = 50; $res<=100; $res += 50)
 {
-	echo "Not found!";
+	set_time_limit(90);
+	$result = $RankChecker->find("com", 100, "imlaunchr.com","viral coupon popup");
+	if ($result !== false)
+	{
+		echo "Page: ".$result["page"].".";
+		echo "<br />Link: <a href='".$result["url"]."'>".$result["url"]."</a>";
+		echo "<br />Position: ".$result["position"];
+		echo "<hr />";
+	}
+	else
+	{
+		echo "Not found!";
+	}
 }
 ?>
