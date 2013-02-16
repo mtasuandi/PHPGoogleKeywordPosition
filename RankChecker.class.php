@@ -29,7 +29,7 @@ class RankChecker
 		$this->end		= $end;
 	}
 	
-	public function find($domainName,$keyword)
+	public function find($country, $resultperpage, $domainName, $keyword)
 	{
 		$url	= "";
 		$page	= 0;
@@ -38,8 +38,18 @@ class RankChecker
 		{
 			$page++;
 			$keyword	= str_replace(" ","+",$keyword);
-			$url		= "http://www.google.com/search?ie=UTF-8&q=$keyword&start=$start";
-			$data		= file_get_contents($url);
+			$url		= "http://www.google.$country/search?ie=UTF-8&q=$keyword&amp;num=$resultperpage&start=$start";
+			
+			$request	= $url;
+			$ch 		= curl_init();
+			curl_setopt($ch, CURLOPT_URL,$request);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+			curl_setopt($ch, CURLOPT_TIMEOUT, 120);
+			curl_setopt($ch, CURLOPT_HEADER, false);
+			curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT'].'-'.$start);
+			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+			$data = curl_exec($ch);
+			curl_close($ch);
 			
 			$flag	= false;
 			$j		= -1;
