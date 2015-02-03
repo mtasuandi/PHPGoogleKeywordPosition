@@ -9,7 +9,7 @@ Written by: Hamed Afshar
 Company: Golha (http://www.golha.net)
 
 Modified by: M Teguh A Suandi
-Company: Biztech Indonesia (http://manfredekblad.net)
+Company: Kreaxy Digital Media (http://kreaxy.com/)
 
 Change Log:
 	Version 1.0 (2011/08/02)
