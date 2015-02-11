@@ -27,3 +27,4 @@ Version 1.0 (2011/08/02)
 		<li>First release.</li>
 	</ul>
 </p>
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/mtasuandi/phpgooglekeywordposition/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
