@@ -1,8 +1,8 @@
-PHP Google Keyword Position
+## PHP Google Keyword Position
 
 Modified by
 
-Name    : Teguh Suandi
+Name    : Teguh Suandi<br>
 Email   : mtasuandi@outlook.com
  
 This PHP Class is a modified class from the PHP Class made by Hamed Afshar from http://www.golha.net. I just add one more result to get the keyword position, previously this function only has result page position and the url.
