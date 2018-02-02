@@ -15,9 +15,10 @@ if (!class_exists('GoogleRankChecker')) {
             $this->end = $end;
         }
         
-        public function find($keyword, $useproxie, $proxies)
+        public function find($keyword, $domain, $useproxie, $proxies)
         {
-            $results = [];
+            $results    = [];
+            $rank       = 0;
 
             for ($start = ($this->start-1) * 10; $start <= $this->end * 10; $start += 10) {
                 $ua = [
@@ -101,10 +102,14 @@ if (!class_exists('GoogleRankChecker')) {
                         $i = 1;
                         
                         while (($j = stripos($data, '<cite class="_Rm">', $j+1)) !== false) {
+                            $rank        = $i++;
                             $k           = stripos($data, '</cite>', $j);
                             $link        = strip_tags(substr($data, $j, $k-$j));
-                            $rank        = $i++;
-                            $results[]   = ['rank' => $rank, 'url' => $link];
+                            
+                            //If domain is set, check only the specified domain
+                            if( (!empty($domain) && strstr($link, $domain)) || empty($domain) ){
+                                $results[]   = ['rank' => $rank, 'url' => $link];
+                            }
                         }
                     }
                 }
@@ -115,6 +120,7 @@ if (!class_exists('GoogleRankChecker')) {
             
             return $results;
         }
+
 
         private function _isCurlEnabled()
         {
