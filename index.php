@@ -8,7 +8,8 @@ include('RankChecker.class.php');
 $newGoogleRankChecker   = new GoogleRankChecker();
 $newquery               = 'cat';
 $useproxies             = false;
+$domain                 = 'www.mywebsite.it';
 $arrayproxies           = [];
-$googledata             = $newGoogleRankChecker->find($newquery, $useproxies, $arrayproxies);
+$googledata             = $newGoogleRankChecker->find($newquery, $domain, $useproxies, $arrayproxies);
 
 echo '<pre>'; var_dump($googledata);
