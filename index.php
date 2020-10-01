@@ -12,3 +12,4 @@ $arrayproxies           = [];
 $googledata             = $newGoogleRankChecker->find($newquery, $useproxies, $arrayproxies);
 
 echo '<pre>'; var_dump($googledata);
+// program end
